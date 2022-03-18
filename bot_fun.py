@@ -21,3 +21,11 @@ def start(update: Update, context: CallbackContext):
 def help(update: Update, context: CallbackContext):
     update.message.reply_txt(
         "Here is going to be a help message.")
+
+def uknown_text(update: Update, context: CallbackContext):
+    update.message.reply_txt(
+        "Sorry, you say what?")
+
+def unknown_cmd(update: Update, context: CallbackContext):
+    update.message.reply_txt(
+        "Sorry, not a valid command. Try /help to see all commands.")
