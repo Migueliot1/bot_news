@@ -31,9 +31,12 @@ def unknown_cmd(update: Update, context: CallbackContext):
         "Sorry, not a valid command. Try /help to see all commands.")
 
 
-update.dispatcher.add_handler(CommandHandler('start', start))
-update.dispatcher.add_handler(CommandHandler('help', help))
+updater.dispatcher.add_handler(CommandHandler('start', start))
+updater.dispatcher.add_handler(CommandHandler('help', help))
 # Filter out unknown commands
-update.dispatcher.add_handler(MessageHandler(Filters.command, unknown_cmd))
+updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown_cmd))
 # Filter out unknown messages
-update.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
+updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
+
+# Running the bot
+updater.start_polling()
