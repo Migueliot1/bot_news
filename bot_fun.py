@@ -19,20 +19,21 @@ def start(update: Update, context: CallbackContext):
         "Hi, I'm a news getter bot!")
 
 def help(update: Update, context: CallbackContext):
-    update.message.reply_txt(
+    update.message.reply_text(
         "Here is going to be a help message.")
 
 def unknown_text(update: Update, context: CallbackContext):
-    update.message.reply_txt(
+    update.message.reply_text(
         "Sorry, you say what?")
 
 def unknown_cmd(update: Update, context: CallbackContext):
-    update.message.reply_txt(
+    update.message.reply_text(
         "Sorry, not a valid command. Try /help to see all commands.")
 
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('help', help))
+updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_cmd))
 # Filter out unknown commands
 updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown_cmd))
 # Filter out unknown messages
