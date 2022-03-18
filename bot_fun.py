@@ -17,3 +17,7 @@ updater = Updater(get_token(), use_context=True)
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
         "Hi, I'm a news getter bot!")
+
+def help(update: Update, context: CallbackContext):
+    update.message.reply_txt(
+        "Here is going to be a help message.")
