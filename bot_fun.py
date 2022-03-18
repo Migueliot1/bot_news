@@ -22,10 +22,18 @@ def help(update: Update, context: CallbackContext):
     update.message.reply_txt(
         "Here is going to be a help message.")
 
-def uknown_text(update: Update, context: CallbackContext):
+def unknown_text(update: Update, context: CallbackContext):
     update.message.reply_txt(
         "Sorry, you say what?")
 
 def unknown_cmd(update: Update, context: CallbackContext):
     update.message.reply_txt(
         "Sorry, not a valid command. Try /help to see all commands.")
+
+
+update.dispatcher.add_handler(CommandHandler('start', start))
+update.dispatcher.add_handler(CommandHandler('help', help))
+# Filter out unknown commands
+update.dispatcher.add_handler(MessageHandler(Filters.command, unknown_cmd))
+# Filter out unknown messages
+update.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
