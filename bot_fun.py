@@ -9,19 +9,17 @@ from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 import threading
 
-# Token getter function
-from hidden import get_token
+from hidden import get_token # Token getter function
 
 # Implement hidden token
 updater = Updater(get_token(), use_context=True)
 
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        "Hi, I'm a news getter bot!")
+        "Hi, I'm a news getter bot!\nCheck /help for available commands.")
 
 def help(update: Update, context: CallbackContext):
-    update.message.reply_text(
-        "Here is going to be a help message.")
+    update.message.reply_text("Commands:\n/check - runs a check on news website\n/stop - stops the bot")
 
 def unknown_text(update: Update, context: CallbackContext):
     update.message.reply_text(
